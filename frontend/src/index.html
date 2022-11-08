@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <body
+    style="
+      background-size: 100%;
+      background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/31b272b9-2d93-4b76-a215-15be8d77460e/dc3frcb-b234cea2-e1ab-4b5c-b107-4ebc95b59e2e.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzMxYjI3MmI5LTJkOTMtNGI3Ni1hMjE1LTE1YmU4ZDc3NDYwZVwvZGMzZnJjYi1iMjM0Y2VhMi1lMWFiLTRiNWMtYjEwNy00ZWJjOTViNTllMmUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.k6sQOH4hcAA7eVP8Gx4Gf_EmWunILNLOhL8TiMP5azI);
+    "
+  >
+    <div id="carlist">This shit broken</div>
+
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-1.7.1.min.js"
+    ></script>
+    <!---
+<script type="text/javascript" src="displaydb.js"></script>
+
+<iframe src="list.json" id="jsonlist"
+frameborder="0" allowtransparency = "true"
+style="background-color : transparent;"  ></iframe>
+--->
+    <script type="text/javascript">
+      $.getJSON('list.json', function (list) {
+        var output = '<div id="output">';
+        for (var i in list.data) {
+          output +=
+            '<div class="cartile" style="border-style: solid;border-width: 5px;">';
+          output +=
+            '<img class="img-fluid mb-4" src="images/' +
+            list.data[i].img +
+            '" alt="">';
+          output +=
+            '<table><thead><tr><th>' +
+            list.data[i].manufacturer +
+            ' ' +
+            list.data[i].model +
+            '</th></tr></thead><tbody></tbody></table>';
+
+          output += '<li>' + list.data[i].year + '</li>';
+          output += '<li>' + list.data[i].transmission + '</li>';
+          output += '<li>' + list.data[i].mileage + '</li>';
+
+          output +=
+            '<a class="btn btn-primary px-3" href=""> $' +
+            list.data[i].price +
+            '</a>';
+          output += '</div>';
+        }
+
+        output += '</ul>';
+        document.getElementById('carlist').innerHTML = output;
+      });
+    </script>
+  </body>
+</html>
